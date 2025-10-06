@@ -14,11 +14,11 @@ namespace JOYCITY_Extractor
             if (new string(br.ReadChars(4)) != "PACK")
                 throw new Exception("This is not a JOYCITY pak file.");
 
-            int tableStart = br.ReadInt32(), tableSize = br.ReadInt32();
+            int tableStart = br.ReadInt32(), fileCount = br.ReadInt32();
 
             br.BaseStream.Position = tableStart;//We're already there, but just in case.
             List<Subfile> subfiles = new();
-            while (br.BaseStream.Position < tableStart + tableSize)
+            while (br.BaseStream.Position < tableStart + fileCount)
             {
                 subfiles.Add(new());
             }
